@@ -12,7 +12,14 @@ metadata:
   name: cert-manager
 ---
 # Namespace monitoring
+# Pod Security: 'privileged' mode is required for node-exporter
+# node-exporter needs hostNetwork, hostPID, and hostPath volumes to collect node metrics
+# This is a legitimate requirement for monitoring infrastructure
 apiVersion: v1
 kind: Namespace
 metadata:
   name: monitoring
+  labels:
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/warn: privileged
