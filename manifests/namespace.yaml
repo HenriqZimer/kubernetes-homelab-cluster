@@ -1,0 +1,18 @@
+---
+# Namespace vault
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vault
+---
+# Namespace cert-manager
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cert-manager
+---
+# Namespace monitoring
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring

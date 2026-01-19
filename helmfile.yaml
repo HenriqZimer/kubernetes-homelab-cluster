@@ -1,0 +1,77 @@
+repositories:
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx/
+
+  - name: jetstack
+    url: https://charts.jetstack.io
+
+  - name: kyverno
+    url: https://kyverno.github.io/kyverno/
+
+  - name: hashicorp
+    url: https://helm.releases.hashicorp.com
+
+  - name: external-secrets
+    url: https://charts.external-secrets.io
+
+  - name: metrics-server
+    url: https://kubernetes-sigs.github.io/metrics-server/
+
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+
+releases:
+  - name: ingress-nginx
+    namespace: ingress-nginx
+    createNamespace: true
+    chart: ingress-nginx/ingress-nginx
+    version: 4.14.0
+    values:
+      - values/ingress-nginx/values.yaml
+
+  - name: cert-manager
+    namespace: cert-manager
+    createNamespace: true
+    chart: jetstack/cert-manager
+    version: 1.19.1
+    values:
+      - values/cert-manager/values.yaml
+
+  - name: kyverno
+    namespace: kyverno
+    createNamespace: true
+    chart: kyverno/kyverno
+    version: 3.6.0
+    values:
+      - values/kyverno/values.yaml
+
+  - name: vault
+    namespace: vault
+    createNamespace: true
+    chart: hashicorp/vault
+    version: 0.31.0
+    values:
+      - values/vault/values.yaml
+
+  - name: external-secrets
+    namespace: external-secrets
+    createNamespace: true
+    chart: external-secrets/external-secrets
+    version: 1.1.0
+    values:
+      - values/external-secrets/values.yaml
+
+  - name: metrics-server
+    namespace: kube-system
+    chart: metrics-server/metrics-server
+    version: 3.13.0
+    values:
+      - values/metrics-server/values.yaml
+
+  - name: kube-prometheus-stack
+    namespace: monitoring
+    createNamespace: true
+    chart: prometheus-community/kube-prometheus-stack
+    version: 79.7.1
+    values:
+      - values/kube-prometheus/values.yaml

@@ -1,0 +1,20 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-label-namespace
+spec:
+  rules:
+    - name: add-label-to-namespace
+      match:
+        resources:
+          kinds:
+            - Namespace
+      generate:
+        apiVersion: v1
+        kind: ConfigMap
+        name: namespace-info
+        namespace: "{{request.object.metadata.name}}"
+        data:
+          data:
+            namespace: "{{request.object.metadata.name}}"
+            createdBy: "Kyverno"

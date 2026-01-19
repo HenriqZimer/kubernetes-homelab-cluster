@@ -1,0 +1,13 @@
+# ===========================================
+# StorageClass para PVs estáticos
+# ===========================================
+# Esta StorageClass permite que PVCs sejam vinculados manualmente a PVs específicos
+# usando volumeName no PVC
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-static
+# volumeBindingMode: WaitForFirstConsumer significa que o PVC não será bound até que um pod que usa o PVC seja criado
+volumeBindingMode: Immediate
+# Não permite provisionamento dinâmico - apenas vinculação manual a PVs existentes
+provisioner: kubernetes.io/no-provisioner
