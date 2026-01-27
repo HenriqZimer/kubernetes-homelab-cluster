@@ -1,4 +1,3 @@
----
 # Namespace vault
 apiVersion: v1
 kind: Namespace
@@ -6,6 +5,17 @@ metadata:
   name: vault
   labels:
     app.kubernetes.io/name: vault
+    app.kubernetes.io/component: secrets-management
+    app.kubernetes.io/managed-by: helmfile
+    environment: production
+---
+# Namespace vault
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: external-secrets
+  labels:
+    app.kubernetes.io/name: external-secrets
     app.kubernetes.io/component: secrets-management
     app.kubernetes.io/managed-by: helmfile
     environment: production

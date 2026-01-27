@@ -13,7 +13,7 @@ spec:
           cloudflare:
             email: henrique.zimermann@outlook.com.br
             apiTokenSecretRef:
-              name: cloudflare-api-token
+              name: cert-manager-token
               key: api-token
         selector:
           dnsZones:
@@ -34,7 +34,7 @@ spec:
           cloudflare:
             email: henrique.zimermann@outlook.com.br
             apiTokenSecretRef:
-              name: cloudflare-api-token
+              name: cert-manager-token
               key: api-token
         selector:
           dnsZones:
